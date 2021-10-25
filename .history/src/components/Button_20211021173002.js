@@ -1,0 +1,33 @@
+import React from 'react';
+import {View, Text, StyleSheet, Dimensions} from 'react-native';
+import StyleGuide from '../theme/StyleGuide';
+const {width, height} = Dimensions.get('window');
+
+const Button = ({label, onPress, primary}) => {
+  const color = primary ? 'white' : undefined;
+  const backgroundColor = primary ? StyleGuide.palette.primary : undefined;
+  return (
+    <View style={styles.containerButton}>
+      <View style={[styles.button,{backgroundColor}]}>
+        <Text style={{color}}>{label}</Text>
+      </View>
+    </View>
+  );
+};
+
+export default Button;
+const styles = StyleSheet.create({
+  containerButton: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom: 50,
+  },
+  button: {
+    height: height / 20,
+    width: width / 3,
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor:"blue"
+  },
+});
