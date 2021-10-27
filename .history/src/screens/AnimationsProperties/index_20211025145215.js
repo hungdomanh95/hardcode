@@ -1,0 +1,75 @@
+import React,{ useEffect, useRef} from 'react';
+import {View, StyleSheet, Text, SafeAreaView, Animated, TouchableWithoutFeedback, Dimensions} from 'react-native';
+import {ScrollView} from 'react-native-gesture-handler';
+import globalStyle from '../../theme/globalStyle'
+const {width, height} = Dimensions.get("window")
+const SPACING = 10
+const AnimationsProperties = () => {
+  const animatedIn = useRef(new Animated.Value(0)).current;
+  const animatedOut = useRef(new Animated.Value(1)).current;
+  useEffect(() => {
+    Animated.timing(animatedIn, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start()
+    Animated.timing(animatedOut, {
+      toValue: 0,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start()
+  }, [])
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={{flex:1, width}}>
+        <View style={{width:width, flexDirection:"row", marginHorizontal:SPACING}}>
+          <View style={styles.containerBox}>
+            {/* <Text style={[globalStyle.h3]}> fadeIn </Text>
+            <Animated.View style={[styles.box, {opacity: animatedIn}]} /> */}
+          </View>
+          <View style={styles.containerBox}>
+            {/* <Text style={[globalStyle.h3]}> fadeOut </Text>
+            <Animated.View style={[styles.box, {opacity: animatedOut}]} /> */}
+          </View>
+          <View style={styles.containerBox}>
+            {/* <Text style={[globalStyle.h3]}> scale </Text>
+            <Animated.View style={[styles.box, {transform:[{scale:animatedIn}]}]} /> */}
+          </View>
+          <View style={styles.containerBox}>
+            {/* <Text style={[globalStyle.h3]}> scale X </Text>
+            <Animated.View style={[styles.box, {transform:[{scaleX:animatedIn}]}]} /> */}
+          </View>
+          <View style={styles.containerBox}>
+            {/* <Text style={[globalStyle.h3]}> scale Y </Text>
+            <Animated.View style={[styles.box, {transform:[{scaleY:animatedIn}]}]} /> */}
+          </View>
+        </View>
+
+
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+export default AnimationsProperties;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  box: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'tomato',
+  },
+  containerBox:{
+      width:width/3,
+      height:width/3,
+      backgroundColor:"red",
+      // margin:SPACING/2,
+      alignItems:"center",
+      // paddingVertical:20
+  }
+});

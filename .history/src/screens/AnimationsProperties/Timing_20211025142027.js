@@ -7,9 +7,9 @@ import {
   TouchableWithoutFeedback,
   Easing,
 } from 'react-native';
+import globalStyle from '../../theme/globalStyle'
 const Timing = () => {
   const valueAnimated = useRef(new Animated.Value(1)).current;
-  const fadeAnim = useRef(new Animated.Value(1)).current;
   const startAnimation = () => {
     Animated.timing(valueAnimated, {
       toValue: 0,
@@ -22,20 +22,18 @@ const Timing = () => {
         duration: 500,
         useNativeDriver: true,
         easing: Easing.ease,
-      }).start(()=>{
-
-      })
+      }).start()
     });
   };
 
+
   return (
-    <View style={styles.row}>
-      <TouchableWithoutFeedback onPress={startAnimation}>
+    <View style={styles.container}>
+      <Text style={[globalStyle.h3]} >Timing</Text>
+        <TouchableWithoutFeedback onPress={startAnimation}>
+          <Animated.View style={[styles.box,{ opacity:valueAnimated}]} />
+        </TouchableWithoutFeedback>
         <Animated.View style={[styles.box,{ opacity:valueAnimated}]} />
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback style={{borderColor:"red", borderWidth:2}}>
-        <Animated.View style={[styles.box,{ opacity:fadeAnim, backgroundColor:"green"}]} />
-      </TouchableWithoutFeedback>
     </View>
   );
 };
@@ -46,10 +44,16 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     backgroundColor: 'tomato',
+    marginBottom:20
   },
   row:{
     flexDirection:"row",
     width:"100%",
-    justifyContent:"space-evenly"
+    justifyContent:"space-evenly",
+    marginTop:10
+  },
+  container:{
+    marginBottom:50,
+    alignItems:"center"
   }
 });
