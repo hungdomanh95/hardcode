@@ -1,13 +1,7 @@
 import * as React from 'react';
-import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from '../screens/HomeScreen';
-import GalleryView from '../screens/GalleryView';
-import ScrollItems from '../screens/ScrollItems';
-import Lessons from '../screens/Lessons';
-import AnimationsProperties from '../screens/AnimationsProperties';
-
+import {AnimationsProperties, GalleryView, HomeScreen, Lessons, Map, ScrollItems} from '../screens'
 
 const Stack = createNativeStackNavigator();
 const RootNavigation = () => {
@@ -22,6 +16,7 @@ const RootNavigation = () => {
         <Stack.Screen name="ScrollItems" component={ScrollItems} />
         <Stack.Screen name="Lessons" component={Lessons} />
         <Stack.Screen name="AnimationsProperties" component={AnimationsProperties} />
+        <Stack.Screen name="Maps" component={Map} />
       </Stack.Navigator>
     </NavigationContainer>
   );

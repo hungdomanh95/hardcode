@@ -1,72 +1,55 @@
-import React, {useEffect, useRef} from 'react';
-import {View, StyleSheet, Text, Animated, Dimensions} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
+import {View, StyleSheet, Text, Animated, Dimensions, Easing} from 'react-native';
 import globalStyle from '../../theme/globalStyle';
-import {Charizard} from '../../assets';
+import {Bulbasaur, Charizard, Squirtle} from '../../assets';
+import {interpolateCircularMotionOverY ,interpolateCircularMotionOverX} from '../../utils/position'
 const {width, height} = Dimensions.get('window');
 const SPACING = 10;
-const SIZE_BOX = (width - 8 * SPACING) / 4;
+const SIZE_BOX = 50;
+let SIZE_CIRCLE =300
+
 const Circle = () => {
   const circle = useRef(new Animated.Value(0)).current;
-
   useEffect(() => {
+
     Animated.loop(
       Animated.timing(circle, {
         toValue: 1,
-        duration: 1000,
+        duration: 3000,
         useNativeDriver: true,
+        easing: Easing.linear,
       }),
       {iterations: 1000},
     ).start();
+
   }, []);
 
-  const snapshot = SIZE_BOX;
-  const radius = width / 1.5 / 2;
+  const snapshot = SIZE_BOX ;
+  const radius = SIZE_CIRCLE / 2 ;
 
-  const interpolateCircularMotionOverY = (snapshot, radius) => {
-    const inputRange = [];
-    const outputRange = [];
-    for (var i = 0; i <= snapshot; ++i) {
-      var value = i / snapshot;
-      var move = Math.sin(value * Math.PI * 2) * radius;
-      inputRange.push(value);
-      outputRange.push(move);
-    }
-    return {inputRange, outputRange};
-  };
-
-  const interpolateCircularMotionOverX = (snapshot, radius) => {
-    const inputRange = [];
-    const outputRange = [];
-    for (var i = 0; i <= snapshot; ++i) {
-      var value = i / snapshot;
-      var move = Math.cos(value * Math.PI * 2) * radius;
-      inputRange.push(value);
-      outputRange.push(move);
-    }
-    return {inputRange, outputRange};
-  };
   const inOutX = interpolateCircularMotionOverX(snapshot, radius);
   const translateCircleX = circle.interpolate(inOutX);
 
   const inOutY = interpolateCircularMotionOverY(snapshot, radius);
   const translateCircleY = circle.interpolate(inOutY);
+
   return (
     <View style={styles.container}>
-      <Text style={[globalStyle.h3]}> Around Circle</Text>
-      <View style={styles.containerCircle}>
-        <Animated.Image
-          resizeMode="contain"
-          source={Charizard}
-          style={[
-            styles.box,
-            {
-              transform: [
-                {translateX: translateCircleX},
-                {translateY: translateCircleY},
-              ],
-            },
-          ]}
-        />
+      <Text style={[globalStyle.h3,{marginBottom:SIZE_BOX}]}> Around Circle</Text>
+      <View style={[styles.containerCircle]}>
+              <Animated.Image
+                resizeMode="contain"
+                source={Charizard}
+                style={[
+                  styles.box,
+                  {
+                    transform: [
+                    {translateX: translateCircleX},
+                    {translateY: translateCircleY},
+                  ]
+                },
+                ]}
+              />
       </View>
     </View>
   );
@@ -86,8 +69,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   containerCircle: {
-    width: width / 1.5,
-    height: width / 1.5,
+    position: "relative",
+    width: SIZE_CIRCLE,
+    height: SIZE_CIRCLE,
     borderRadius: 1000,
     justifyContent: 'center',
     alignItems: 'center',

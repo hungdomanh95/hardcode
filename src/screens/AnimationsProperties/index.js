@@ -1,30 +1,17 @@
 import React from 'react';
+import { Fragment } from 'react';
 import {View, StyleSheet, SafeAreaView, ScrollView} from 'react-native';
-import Blink from './Blink';
-import Fade from './Fade';
-import Scale from './Scale';
-import Pulsate from './Pulsate';
-import Translate from './Translate';
-import Spring from './Spring';
-import Square from './Square';
-import Circle from './Circle';
-import Rotate from './Rotate';
-
+import { listAnimation } from './listAnimation';
 const SPACING = 10;
+
 const AnimationsProperties = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View style={styles.containerRow}>
-          <Fade/>
-          <Blink/>
-          <Scale/>
-          <Pulsate/>
-          <Translate/>
-          <Spring/>
-          <Square/>
-          <Circle/>
-          <Rotate/>
+          {listAnimation.map((item, index)=>{
+            return <Fragment key={index}>{item.component}</Fragment>
+          })}
         </View>
       </ScrollView>
     </SafeAreaView>

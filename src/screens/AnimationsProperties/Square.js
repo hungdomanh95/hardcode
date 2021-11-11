@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {View, StyleSheet, Text, Animated, Dimensions} from 'react-native';
+import {View, StyleSheet, Text, Animated, Dimensions, Easing} from 'react-native';
 import globalStyle from '../../theme/globalStyle';
 import {Charizard} from '../../assets';
 const {width, height} = Dimensions.get('window');
@@ -18,21 +18,25 @@ const Square = () => {
           toValue: 1,
           duration: 500,
           useNativeDriver: true,
+          easing: Easing.linear,
         }),
         Animated.timing(aroundY, {
           toValue: 1,
           duration: 500,
           useNativeDriver: true,
+          easing: Easing.linear,
         }),
         Animated.timing(aroundX, {
           toValue: 2,
           duration: 500,
           useNativeDriver: true,
+          easing: Easing.linear,
         }),
         Animated.timing(aroundY, {
           toValue: 2,
           duration: 500,
           useNativeDriver: true,
+          easing: Easing.linear,
         }),
       ]),
       {iterations: 500},
