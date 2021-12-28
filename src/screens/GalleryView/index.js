@@ -44,7 +44,7 @@ const GalleryView = () => {
   return (
     <View style={{flex:1}}>
       <FlatList
-      ref={topRef}
+        ref={topRef}
         data={images}
         keyExtractor={item=>item.id.toString()}
         onMomentumScrollEnd={(e)=>{

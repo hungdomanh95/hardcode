@@ -1,9 +1,5 @@
-import { Dimensions, StyleSheet } from 'react-native';
-const widthScreen = Dimensions.get('window').width;
-const heightScreen = Dimensions.get('window').height;
+import { StyleSheet } from 'react-native';
 const globalStyle = StyleSheet.create({
-  widthScreen,
-  heightScreen,
   h2:{
     fontSize:32,
     fontWeight:"700",
@@ -13,6 +9,10 @@ const globalStyle = StyleSheet.create({
     fontWeight:"700",
     marginBottom:5
   },
+  row:{
+    flexDirection:"row",
+    alignItems:"center"
+  }
 });
 
 export default globalStyle;

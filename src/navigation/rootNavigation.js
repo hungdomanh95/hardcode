@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {AnimationsProperties, GalleryView, HomeScreen, Lessons, Map, ScrollItems} from '../screens'
+import {AnimationsProperties, GalleryView, HomeScreen, Lessons, Map, ScrollItems, Instagram} from '../screens'
 
 const Stack = createNativeStackNavigator();
 const RootNavigation = () => {
@@ -17,6 +17,7 @@ const RootNavigation = () => {
         <Stack.Screen name="Lessons" component={Lessons} />
         <Stack.Screen name="AnimationsProperties" component={AnimationsProperties} />
         <Stack.Screen name="Maps" component={Map} />
+        <Stack.Screen name="Instagram" component={Instagram} />
       </Stack.Navigator>
     </NavigationContainer>
   );

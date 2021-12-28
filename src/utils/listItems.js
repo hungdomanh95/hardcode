@@ -1,4 +1,4 @@
-import {iconGallery, iconScroll,avatar,iconLessons,iconRocket,iconMaps} from '../assets';
+import {iconGallery, iconScroll,avatar,iconLessons,iconRocket,iconMaps,iconInstagram} from '../assets';
 export const listHardCode = [
   {
     id: 1,
@@ -29,6 +29,12 @@ export const listHardCode = [
     nameProject: 'Maps',
     icon: iconMaps,
     navigation: 'Maps',
+  },
+  {
+    id: 6,
+    nameProject: 'Instagram',
+    icon: iconInstagram,
+    navigation: 'Instagram',
   },
 ];
 export const listAvatar = [

@@ -12,12 +12,13 @@ import {useNavigation} from '@react-navigation/native';
 import {RNBackground} from '../../assets';
 import globalStyle from '../../theme/globalStyle';
 import {listHardCode} from '../../utils/listItems';
+import size from '../../utils/size';
 const SIZE_ICON = 60
 const HomeScreen = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={globalStyle.h2}>React Native</Text>
+      <Text style={[globalStyle.h2,{textAlign:"center"}]}>React Native</Text>
       <Image source={RNBackground} style={styles.bgHome} />
       <ScrollView style={styles.container}>
         <View style={styles.containerItem}>
@@ -41,11 +42,11 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:"white"
+    backgroundColor:"white",
   },
   bgHome: {
-    width: globalStyle.widthScreen,
-    height: globalStyle.heightScreen / 4,
+    width:size.width,
+    height: size.height / 4,
   },
   iconHome: {
     width: SIZE_ICON,
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
     paddingTop:25,
   },
   stylesIcon: {
-    width: globalStyle.widthScreen / 3,
+    width: size.width / 3,
     alignItems:"center",
     padding: 20,
     // borderColor:"#ddd",
